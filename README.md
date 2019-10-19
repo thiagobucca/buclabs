@@ -1,2 +1,5 @@
-# b u c l a b s
-Static SPA page to use with IFTT Webhook and Email integration. Backendless.
+# b u c l a b s 
+
+Static SPA page using IFTT Webhook & Email integration. Backendless.
+
+Live Demo: https://thiagobucca.github.io/buclabs/
