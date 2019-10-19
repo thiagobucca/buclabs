@@ -103,6 +103,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/sweetalert.min.js"></script>
 			<script>
 				function sendTrigger() {
 
@@ -110,17 +111,27 @@
 				  var obj = new Object();
                   obj.value1 = document.getElementById("name").value;
                   obj.value2 = document.getElementById("email").value;
-                  obj.value3 = document.getElementById("message").value
+                  obj.value3 = document.getElementById("message").value;
+				  $.post('https://maker.ifttt.com/trigger/website_request/with/key/ALU8A9UQiP5zRUrBTcv3G', {value1:document.getElementById("name").value, value2:document.getElementById("email").value, value3: document.getElementById("message").value}, showModal(),'jsonp');
 
-				  $.ajax({
-                  url: 'https://maker.ifttt.com/trigger/website_request/with/key/ALU8A9UQiP5zRUrBTcv3G',
-                  type: 'POST',
-                  data: JSON.stringify(obj),
-				  dataType: 'jsonp',
-				  crossDomain: true,
-                  contentType: 'application/json; charset=utf-8'
-                 })
 				}
+
+             function showModal() {
+
+				swal({
+                  title: "Obrigado!",
+                  text: "Em breve, retornaremos seu contato.",
+                  icon: "success",
+                button: "Ok!",
+                      }).then((value) => {
+					 
+				  document.getElementById("name").value = "";
+                  document.getElementById("email").value = "";
+                  document.getElementById("message").value = "";
+                     });
+
+			 }
+
 				</script>
 
 
