@@ -75,13 +75,14 @@
 			<form method="post" action="#">
 				<div class="row">
 					<div class="col-6 col-12-mobilep">
-						<input type="text" name="name" id="name" placeholder="Nome" />
+						<input type="text" name="name" id="name" maxlength="30" placeholder="Nome" />
 					</div>
 					<div class="col-6 col-12-mobilep">
-						<input type="email" name="email" id="email" placeholder="Email" />
+						<input type="email" name="email" id="email" maxlength="30" placeholder="Email" />
 					</div>
 					<div class="col-12">
-						<textarea name="message" id="message" placeholder="Mensagem" rows="6"></textarea>
+						<textarea name="message" id="message" maxlength="300" placeholder="Mensagem"
+							rows="6"></textarea>
 					</div>
 					<div class="col-12">
 						<ul class="actions special">
@@ -96,8 +97,8 @@
 							class="label">Github</span></a></li>
 				<li><a href="https://linkedin.com/in/thiago-tavares-2751a9136/" class="icon brands fa-linkedin"><span
 							class="label">Linkedln</span></a></li>
-							<li><a href="https://www.instagram.com/thiagobucca/" class="icon brands fa-instagram"><span
-								class="label">Instagram</span></a></li>
+				<li><a href="https://www.instagram.com/thiagobucca/" class="icon brands fa-instagram"><span
+							class="label">Instagram</span></a></li>
 			</ul>
 
 			<ul class="copyright">
@@ -125,7 +126,17 @@
 					icon: "warning",
 					button: "Ok!",
 				})
-			} else {
+
+			}
+			else if (!document.getElementById("message").value.includes("@")) {
+				swal({
+					title: "Atenção!",
+					text: "E-mail inválido.",
+					icon: "warning",
+					button: "Ok!",
+				})
+			}
+			else {
 
 				$.post('https://maker.ifttt.com/trigger/website_request/with/key/ALU8A9UQiP5zRUrBTcv3G',
 					{
